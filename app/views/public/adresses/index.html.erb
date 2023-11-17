@@ -1,0 +1,58 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container m5-5 mb-5">
+  <div class="row shipping-new">
+    <div class="col-sm-10 px-sm-0 offset-sm-1">
+      <h2>配送先登録/一覧</h2>
+    </div>
+  </div>
+<div class="row">
+  <%= form_with model: @address, url: adresses_path, local: true do |f| %>
+  <table>
+    <tr>
+      <div class="form-group">
+        <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :shipping_post_code, placeholder:"0000000", id: "customer_post_code" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th><%= f.label :"住所" %></th>
+        <td><%= f.text_field :shipping_address, placeholder:"住所を入力してください", id: "customer_adress" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="form-group">
+        <th><%= f.label :"宛名" %></th>
+        <td><%= f.text_field :shipping_name, placeholder:"名前を入力してください" %></td>
+        <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+      </div>
+    </tr>
+  </table>
+  <% end %>
+</div>
+</div>
+
+<div class"row mx-auto mt-3">
+  <table class="table table-bordered border-dark table-hover allgn-middle custom-table">
+    <thread>
+      <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% @address.each do |address| %>
+        <tr>
+          <td><%= adresses.shipping_post_code %></td>
+          <td><%= adresses.shipping_address %></td>
+          <td><%= adresses.shipping_name %></td>
+          <td><%= link_to "編集する", edit_shipping_adress_path(shipping_address), class:"btn btn-success" %>
+          <%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }, :class => "btn btn-danger ms-3" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
