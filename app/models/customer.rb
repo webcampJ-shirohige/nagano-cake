@@ -9,8 +9,8 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
 
 #以下バリデーション　数字のみ漢字のみカナのみなど
-  validates :telephone_number, numericality: {greater_than: 10, less_than: 11}
-  validates :post_cord, numericality: {equal_to: 7}
+  validates :telephone_number, numericality: {only_integer: true}, length: { in: 10..11}
+  validates :post_cord, numericality: {only_integer: true}, length: { is: 7}
   validates :last_name, format:{with: /\p{Han}/}
   validates :first_name, format:{with: /\p{Han}/}
   validates :last_name_kana, format:{with: /\A[ァ-ヶー]+\z/}
