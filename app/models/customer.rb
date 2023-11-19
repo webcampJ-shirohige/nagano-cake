@@ -6,6 +6,12 @@ class Customer < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-  has_many :addresses, dependent: :destoroy
+  has_many :addresses, dependent: :destroy
 
+  validates :telephone_number, numericality: {greater_than: 10, less_than: 11}
+  validates :post_cord, numericality: {equal_to: 7}
+  validates :last_name, format:{with: /\p{Han}/}
+  validates :first_name, format:{with: /\p{Han}/}
+  validates :last_name_kana, format:{with: /\A[ァ-ヶー]+\z/}
+  validates :first_name_kana, format:{with: /\A[ァ-ヶー]+\z/}
 end
