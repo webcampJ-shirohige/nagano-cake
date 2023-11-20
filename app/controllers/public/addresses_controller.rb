@@ -1,9 +1,9 @@
 class Public::AddressesController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
   def index
     @address = Address.new
-    #@customer = current_customer
-    #@addresses = @customer.addresses
+    @customer = current_customer
+    @addresses = @customer.addresses
   end
 
   def create
@@ -25,8 +25,10 @@ class Public::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
+      puts "Address updated successfully: #{@address}"
       redirect_to addresses_path
     else
+      puts "Address update failed with errors: #{@address.errors}"
       render :edit
     end
   end

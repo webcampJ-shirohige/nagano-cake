@@ -4,9 +4,9 @@
     </div>
     <% if @address.errors.any? %>
     <div class="row mt-3">
-        <h5><%= @address.error.count %>件のエラーが発生しました。</h5>
+        <h5><%= @address.errors.count %>件のエラーが発生しました。</h5>
         <ul>
-            <% @address.error.full_messages.each do |message| %>
+            <% @address.errors.full_messages.each do |message| %>
             <li><%= message %></li>
             <% end %>
         </ul>
@@ -38,17 +38,22 @@
                     <th>郵便番号</th><th>住所</th><th>宛名</th><th></th><th></th>
                 </thead>
                 <tbody>
-                    <% @address.each do |address| %>
+                    <% @addresses.each do |address| %>
                     <tr>
                         <td><%= address.shipping_post_code %></td>
                         <td><%= address.shipping_address %></td>
                         <td><%= address.shipping_name %></td>
                         <td class="float-right"><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success"%></td>
-                        <td><%= link_to "削除する", addresses_path(address.id), method: delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-success" %></td>
+                        <td><%= link_to "削除する", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-success" %></td>
                     </tr>
                     <% end %>
                 </tbody>
             </table>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
         </div>
     </div>
 </div>
