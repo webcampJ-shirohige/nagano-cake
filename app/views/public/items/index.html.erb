@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h4>商品一覧</h4>
+  <h5>(全<%= @items.count %>件)</h5>
+
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.image, size: "300x300" %>
+        <% end %>
+      </td>
+      <td><%= item.name %></td>
+      <td>￥<%= item.price_before_tax %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+</div>
