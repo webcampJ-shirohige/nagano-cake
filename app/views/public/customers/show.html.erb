@@ -1,10 +1,13 @@
+<div class="container">
+
+
 <h4>マイページ</h4>
 
 <h4>登録情報</h4>
-<%= link_to "編集する", customers_mypage_edit_path %>
 
+<%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-sm btn-success" %>
 
-<table>
+<table class="table table-borderd">
   <tr>
     <th>氏名</th>
     <td><%= @customer.last_name %>  <%= @customer.first_name %></td>
@@ -32,11 +35,12 @@
 </table>
 
 <h4>配送先</h4>
-<%= link_to "一覧を見る", addresses_path %>
+<%= link_to "一覧を見る", addresses_path, class: "btn btn-sm btn-primary" %>
 
 <h4>注文履歴</h4>
-<%= link_to "一覧を見る", orders_path %>
+<%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary" %>
 
 
 <%= link_to "ログアウト" , destroy_customer_session_path, method: :delete %>
 
+</div>
