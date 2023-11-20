@@ -1,9 +1,9 @@
 class Public::AddressesController < ApplicationController
-  before_action :authenticate_customer!
+  #before_action :authenticate_customer!
   def index
     @address = Address.new
-    @customer = current_customer
-    @addresses = @customer.addresses(params:[:id])
+    #@customer = current_customer
+    #@addresses = @customer.addresses
   end
 
   def create
@@ -13,30 +13,33 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       @customer = current_customer
-      @addresses = @customer.addresses(params[:id])
+      @addresses = @customer.addresses
       render :index
     end
+  end
 
-    def edit
+  def edit
       @address = Address.find(params[:id])
-    end
+  end
 
-    def update
-      @address = Address.find(params[:id])
-      @address.update(address_params)
+  def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
       redirect_to addresses_path
-    end
-
-    def destroy
-      address = Address.find(params[:id])
-      address.destroy
-      redirect_to addresses_path
+    else
+      render :edit
     end
   end
 
-    private
-
-    def address_params
-      params.require(:address).permit(:shipping_post_code, :shipping_address, :shpping_name)
-    end
+  def destroy
+    address = Address.find(params[:id])
+    address.destroy
+    redirect_to addresses_path
   end
+
+  private
+
+  def address_params
+    params.require(:address).permit(:shipping_post_code, :shipping_address, :shipping_name)
+  end
+end
