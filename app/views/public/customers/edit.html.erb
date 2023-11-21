@@ -1,53 +1,45 @@
 <div class="container">
-<h4>会員情報編集</h4>
 
-<%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
+  <div class="row mt-5">
+    <h3>会員情報編集</h3>
+  </div>
 
-<table>
-  <tr>
-   <div class="field">
-    <th>氏名</th>
-    <td><%= f.text_field :last_name, class: "rounded"  %></td>
-    <td><%= f.text_field :first_name, class: "rounded"  %></td>
-   </div>
-  </tr>
-  <tr>
-    <div class="field">
-      <th>フリガナ</th>
-      <td><%= f.text_field :last_name_kana, class: "rounded"  %></td>
-      <td><%= f.text_field :first_name_kana, class: "rounded"  %></td>
-    </div>
-  </tr>
-  <tr>
-    <div class="field">
-      <th>郵便番号</th>
-      <td><%= f.text_field :post_cord, class: "rounded"  %></td>
-    </div>
-  </tr>
-  <tr>
-    <div class="field">
-      <th>住所</th>
-      <td><%= f.text_field :address, class: "rounded"  %></td>
-    </div>
-  </tr>
-  <tr>
-    <div class="field">
-      <th>電話番号</th>
-      <td><%= f.text_field :telephone_number, class: "rounded"  %></td>
-    </div>
-  </tr>
-  <tr>
-    <div class="field">
-      <th>メールアドレス</th>
-      <td><%= f.text_field :email, class: "rounded"  %></td>
-    </div>
-    <tr>
-      <td></td>
-      <td><%= f.submit "編集内容を保存", class: "btn btn-sm btn-success rounded" %></td>
-      <td><%= link_to "退会する", customers_mypage_confirm_path, class: "btn btn-sm btn-danger rounded" %></td>
-    </tr>
-  </tr>
-</table>
+  <%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
 
-<% end %>
+  <div class="row mt-3">
+    <table class="table table-borderless">
+      <tr>
+        <th>氏名</th>
+        <td><%= f.text_field :last_name, class: "rounded"  %></td>
+        <td><%= f.text_field :first_name, class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= f.text_field :last_name_kana, class: "rounded"  %></td>
+        <td><%= f.text_field :first_name_kana, class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= f.text_field :post_cord, class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= f.text_field :address, class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= f.text_field :telephone_number, class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.text_field :email, class: "rounded"  %></td>
+      <tr>
+        <td></td>
+        <td><%= f.submit "編集内容を保存", class: "btn btn-sm btn-success rounded" %></td>
+        <td><%= link_to "退会する", customers_mypage_confirm_path, class: "btn btn-sm btn-danger rounded" %></td>
+      </tr>
+    </table>
+  </div>
+  <% end %>
 </div>
+
