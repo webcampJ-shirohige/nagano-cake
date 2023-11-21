@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row mt-5">
+    <h3>商品詳細</h3>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-4">
+      <%= image_tag @item.image, size: "200x200" %>
+    </div>
+    <div class="col-7 ml-2">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @item.genre_id %></td>
+        </tr>
+        <tr>
+          <th>税込価格<br>(税抜価格)</th>
+          <td><%= number_with_delimiter(@item.item_total_price, delimiter: ',') %>(<%= number_with_delimiter(@item.price_before_tax, delimiter: ',') %>)円</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-lg btn-success rounded" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
