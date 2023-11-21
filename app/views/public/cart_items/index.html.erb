@@ -1,0 +1,26 @@
+<div class="container">
+  <% if @cart_items.empty? %>
+  <div class="row mt-3">
+    <div class="col-10 mt-3">
+      <h2>ショッピングカート</h2>
+    </div>
+    <div class="col-2 mt-3"></div>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="colo-sm-4 mt-3 mx-auto">
+    <h1>
+      <i class="fa-slid fa-cart-shopping fa-5x" style="color: gainsborol"></i>
+    </h1>
+    <h2 class="text-nowrap mt-5">カートに商品がありません</h2>
+  </div>
+</div>
+<% else %>
+<div class="row mt-3">
+  <div class="col-10 mt-3">
+    <h2>ショッピングカート</h2>
+  </div>
+  <div class="col-2 mt-3 text-nowrap">
+    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "カート内の商品を全部削除しますが、よろしいでしょうか？", class: "btn btn-danger" %>
+  </div>
+</div>
