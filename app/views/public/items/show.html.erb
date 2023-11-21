@@ -1,9 +1,12 @@
 <div class="container">
-
-  <%= image_tag @item.image, size: "400x400" %>
-
-  <%= @item.name %>
-  <%= @item.introduction %>
-
-  ￥<%= @item.price_before_tax %>
+  <div class="row mt-5">
+    <div class="col-4">
+      <%= image_tag @item.image, size: "300x300" %>
+    </div>
+    <div class="col-6 offset-2">
+      <h3 class="my-3"><%= @item.name %></h3>
+      <p class="my-3"><strong><%= @item.introduction %></strong></p>
+      <p class="my-3"><strong>￥<%= number_with_delimiter(@item.item_total_price, delimiter: ',') %></strong></p>
+    </div>
+  </div>
 </div>

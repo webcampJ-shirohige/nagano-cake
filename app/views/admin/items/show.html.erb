@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <th>税込価格<br>(税抜価格)</th>
-          <td><%= @item.price_before_tax %>円</td>
+          <td><%= number_with_delimiter(@item.item_total_price, delimiter: ',') %>(<%= number_with_delimiter(@item.price_before_tax, delimiter: ',') %>)円</td>
         </tr>
         <tr>
           <th>販売ステータス</th>
