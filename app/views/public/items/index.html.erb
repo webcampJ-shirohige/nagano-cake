@@ -1,21 +1,21 @@
 <div class="container">
+  <div class="row mt-5">
+    <h3>商品一覧</h3>
+    <span>(全<%= @items.count %>件)</span>
+  </div>
 
-  <h4>商品一覧</h4>
-  <h5>(全<%= @items.count %>件)</h5>
-
-<table>
-  <% @items.each do |item| %>
-    <tr>
-      <td>
+<% @items.each do |item| %>
+  <div class="row mt-2">
+    <div class="col-2">
+      <div class="card">
         <%= link_to item_path(item) do %>
-          <%= image_tag item.image, size: "300x300" %>
+          <%= image_tag item.image, size: "200x200", class: "card-img-top" %>
         <% end %>
-      </td>
-      <td><%= item.name %></td>
-      <td>￥<%= item.price_before_tax %></td>
-    </tr>
-  <% end %>
-</table>
-
-
+      </div>
+      <div class="card-body">
+        <div class="h5 card-title"><%= item.name %></div>
+        <div class="h6 card-subtitle">￥<%= item.price_before_tax %></div>
+    </div>
+  </div>
 </div>
+<% end %>
