@@ -4,29 +4,39 @@
       <p id= "notice"></p>
       <div class= "container">
         <div class= "row">
-          <div class= "col-sm-12 px-sm-0 mx-auto">
+          <div class= "col-sm-12">
             <h4>ジャンル機能</h4>
-        
+
             <%= form_with model: @genre, url: admin_genres_path do |f| %>
-              <p>ジャンル名</p>
-              <%= f.text_field :name %>
-        
-              <div class= "form-group">
-                <%= f.submit '新規登録', class:'btn btn-success' %>
-              </div>
-            <% end %>
-        
-            <h4>ジャンル</h4>
-        
-            <% @genres.each do |genre| %>
-        
-              <span><%= genre.name %></span>
-        
-              <%= link_to '編集する', edit_admin_genre_path(genre), class:'btn btn-success'  %>
-        
+              <p>ジャンル名
+              <%= f.text_field :name, class:'m-4', :placeholder => "ジャンル名" %>
+
+              <%= f.submit '新規登録', class:'btn btn-success m-4' %>
+              </p>
+
             <% end %>
           </div>
-          
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class= "col-sm-6">
+            <table class='table'>
+              <tr class="table-secondary">
+                <th colspan="2">ジャンル</th>
+              </tr>
+              <% @genres.each do |genre| %>
+
+              <tr class="border-bottom">
+                <td><%= genre.name %></td>
+
+                <td style="width: 150px;"><%= link_to '編集する', edit_admin_genre_path(genre), class:'btn btn-success'  %></td>
+              </tr>
+              
+              <% end %>
+            </table>
+          </div>
+          <div class= "col-sm-6"></div>
         </div>
       </div>
     </main>
