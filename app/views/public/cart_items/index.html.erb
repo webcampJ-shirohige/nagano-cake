@@ -30,10 +30,10 @@
     <th>商品名</th><th>単価(税込)</th><th>数量</th><th>小計</th><th></th>
   </thead>
   <tdbody>
-    <% cart_items.each do |cart_item| %>
+    <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= image_tag cart_item.item.get_image(70,50) %></td>
-      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+      <td><%= image_tag cart_item.item.display_image, size: "70x50" %></td>
+      <td><%= number_with_delimiter(cart_item.item.item_total_price) %></td>
       <td>
         <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
           <%= f.select :amount, *[1..10] %>
@@ -41,8 +41,8 @@
           <%= f.submit "変更", class: "btn btn-succeses" %>
         <% end %>
       </td>
-      <td><%= cart_item.subtotal.to_s(:delimted) %></td>
-      <% @total_payment += cart_item.subtotal %>
+      <td><%= number_with_delimiter(cart_item.subtotal.to_i) %></td>
+      <% @total_payment += cart_item.subtotal.to_i %>
       <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "選択した商品を削除しますが、よろしいでしょうか？", class: "btn btn-danger" %></td>
     </tr>
     <% end %>
