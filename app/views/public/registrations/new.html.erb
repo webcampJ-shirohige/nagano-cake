@@ -1,56 +1,70 @@
-<h2>新規会員登録</h2>
-
-<%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name, "名前（姓）"%>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    <%= f.label :name, "（名）" %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
+<div class="container">
+  <div class="row mt-5 mx-5">
+    <h3>新規会員登録</h3>
   </div>
 
-  <div class="field">
-    <%= f.label :name_kana, "フリガナ (セイ)" %>
-    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-    <%= f.label :name_kana, "(メイ)" %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-  </div>
+  <%= form_with model: @customer, url: customer_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :post_cord, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :post_cord, autocomplete: "post_cord" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, autocomplete: "adresses" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
-    <%= f.text_field :telephone_number, autocomplete: "telephone_number" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード（6文字以上）" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード（確認用）" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
+  <div class="row mt-3">
+    <table>
+      <tr>
+        <td>名前</td>
+        <td><%= f.label :name, "(姓)"%></td>
+        <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "rounded" %></td>
+        <td><%= f.label :name, "(名)" %></td>
+        <td><%= f.text_field :first_name, autocomplete: "first_name", class: "rounded" %></td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td><%= f.label :name_kana, "(セイ)" %></td>
+        <td><%= f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "rounded" %></td>
+        <td><%= f.label :name_kana, "(メイ)" %></td>
+        <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email, "メールアドレス" %></td>
+        <td></td>
+        <td><%= f.email_field :email, autocomplete: "email", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :post_cord, "郵便番号(ハイフンなし)" %></td>
+        <td></td>
+        <td><%= f.text_field :post_cord, autocomplete: "post_cord", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :address, "住所" %></td>
+        <td></td>
+        <td><%= f.text_field :address, autocomplete: "adresses", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :telephone_number, "電話番号(ハイフンなし)" %></td>
+        <td></td>
+        <td><%= f.text_field :telephone_number, autocomplete: "telephone_number", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password, "パスワード（6文字以上）" %></td>
+        <td></td>
+        <td><%= f.password_field :password, autocomplete: "new-password", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password_confirmation, "パスワード（確認用）", class: "rounded"  %></td>
+        <td></td>
+        <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded"  %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= f.submit "新規登録", class: "btn btn-sm btn-success rounded"  %></td>
+      </tr>
+    </table>
   </div>
 <% end %>
 
-<h2>既に登録済みの方</h2>
-<%= link_to "こちら", new_customer_session_path %>からログインしてください
+  <div class="row mt-2">
+    <h3>既に登録済みの方</h3>
+  </div>
+  <div class="row mt-1 ml-5">
+    <%= link_to "こちら", new_customer_session_path %>からログインしてください
+  </div>
+</div>
