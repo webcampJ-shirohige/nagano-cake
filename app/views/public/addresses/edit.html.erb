@@ -1,0 +1,39 @@
+<% if @address.errors.any? %>
+  <div class="row mt-3">
+    <h5><%= @address.errors.count %>件のエラーが発生しました。</h5>
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+    <div class="row mt-5">
+        <h2>配送先編集</h2>
+    </div>
+    <div class="row mt-3">
+        <div class="table table-borderless">
+            <%= form_with model: @address, url: address_path do |f| %>
+            <table>
+            <tr>
+                <td><label for="address_postal_code"><strong>郵便番号(ハイフンなし)</strong></label></td>
+                <td><%= f.text_field :shipping_post_code, id:"address_postal_code" %></td>
+            </tr>
+            <tr>
+                <td><label for="address_address"><strong>住所</strong></label></td>
+                <td><%= f.text_field :shipping_address, id:"address_address" %></td>
+            </tr>
+            <tr>
+                <td><label for="address_name"><strong>宛名</strong></label></td>
+                <td><%= f.text_field :shipping_name, id:"address_name" %></td>
+            </tr>
+            <tr>
+                <td><%= f.submit "変更内容を保存", class: "btn btn-success" %></td>
+            </tr>
+            </table>
+            <% end %>
+        </div>
+    </div>
+</div>

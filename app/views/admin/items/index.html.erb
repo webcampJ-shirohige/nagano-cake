@@ -1,0 +1,43 @@
+<%# 商品作成リンクがうまくいかないので仮置きで真横に+おいてます %>
+<%= render 'layouts/admin_header' %>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-2">
+      <h4>商品一覧</h4>
+    </div>
+    <div class="col ms-auto">
+      <%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <table class="table table-borderless">
+      <tr>
+        <th class="table-secondary">商品ID</th>
+        <th class="table-secondary">商品名</th>
+        <th class="table-secondary">税抜価格</th>
+        <th class="table-secondary">ジャンル</th>
+        <th class="table-secondary">ステータス</th>
+      </tr>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= number_with_delimiter(item.price_before_tax, delimiter: ',') %></td>
+        <td><%= item.genre_id %></td>
+        <td>
+            <% if item.is_selling_status? %>
+              <p>販売中</p>
+            <% else %>
+              <p>販売停止中</p>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+  <%= paginate @items %>
+</div>
