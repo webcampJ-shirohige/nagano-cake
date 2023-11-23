@@ -16,4 +16,12 @@ class Customer < ApplicationRecord
   validates :first_name, format:{with: /\p{Han}/}
   validates :last_name_kana, format:{with: /\A[ァ-ヶー]+\z/}
   validates :first_name_kana, format:{with: /\A[ァ-ヶー]+\z/}
+
+  def address_display
+  '〒' + post_cord + ' ' + address + ' '
+  end
+  
+  def fullname
+    last_name + first_name
+  end
 end
