@@ -12,7 +12,7 @@
       </tr>
       <% @cart_items.each do |cart_item| %>
       <tr>
-        <th><%= image_tag cart_item.item.display_image, size: "70x50" %><%= cart_item.item.name %></th>
+        <th><%= image_tag cart_item.item.image, size: "70x50" %><%= cart_item.item.name %></th>
         <td><%= cart_item.item.item_total_price %></td>
         <td><%= cart_item.amount %></td>
         <td><%= cart_item.subtotal %></td>
