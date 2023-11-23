@@ -1,9 +1,8 @@
 <header>
   <nav>
     <div class="container">
-      <%= link_to "LOGO", root_path %>
-      <div>
-        <ul class="navbar-nav ml-auto">
+      <a class="navbar-brand" href="/"><span>LOGO</span></a>
+        <ul class = "nav pull-right nav-pills">
         <% if customer_signed_in? %>
           <li>
             <%= link_to "マイページ", customers_mypage_edit_path %>
