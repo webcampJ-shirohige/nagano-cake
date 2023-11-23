@@ -14,8 +14,9 @@
   <div class="row mt-3">
     <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
       <%= f.label :amount, "個数" %>
-      <%= f.select :amount, options_from_collection_for_select(1..10) %>
-      <% f.hidden_field :item_id, value: @item.id %>
+      <%= f.select :amount, options_from_collection_for_select(1..10, :to_s, :to_s) %>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.submit "カートに入れる" %>
     <% end %>
   </div>
 </div>
