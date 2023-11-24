@@ -5,7 +5,7 @@
 <h2>会員一覧</h2>
 <table class='table'>
   <thead>
-    <tr>
+    <tr class="table-secondary">
     <th>会員id</th>
     <th>氏名</th>
     <th>メールアドレス</th>
@@ -16,10 +16,10 @@
     <% @customers.each do |customer| %>
     <tr>
         <td><%= customer.id %></td>
-        <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "link-dark"%></td>
+        <td><p class = "text-dark"><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "link-dark"%></p></td>
         <td><%= customer.email %></td>
         <td><% if customer.is_active  %>
-             <p>有効</p>
+             <p class="text-success">有効</p>
             <% else %>
              <p>退会</p>
             <% end %>
@@ -30,3 +30,4 @@
   </div>
  </div>
 </div>
+<%= paginate @customers %>
