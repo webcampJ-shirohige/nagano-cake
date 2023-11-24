@@ -40,9 +40,15 @@
     <h4>お届け先</h4>
     <%= @order.address_display %>
   </div>
-  <%= form_with model: @order, url: orders_complete_path do |f| %>
+  <%= form_with model: @order, url: orders_path do |f| %>
   <div class="row">
     <%= f.submit "注文を確定する", class: "btn btn-sm btn-succese rounded" %>
+    <%= f.hidden_field :payment, value: @order.payment %>
+    <%= f.hidden_field :address, value: @order.address %>
+    <%= f.hidden_field :name, value: @order.name %>
+    <%= f.hidden_field :post_code, value: @order.post_code %>
+    <%= f.hidden_field :postage, value: @postage %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
   </div>
   <% end %>
 </div>
