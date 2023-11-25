@@ -22,8 +22,8 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items=current_customer.cart_items
     @postage=@order.postage
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @billing=@order.billing_amount
+    @total = 0
+    @billing=@postage+@total
   end
 
   def create
@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
       @order_details.order_id=order.id
       @order_details.item_id=cart_item.item.id
       @order_details.piece=cart_item.amount
-      @order_details.price=order.billing_amount
+      @order_details.price=cart_item.item.item_total_price
       @order_details.save
     end
     redirect_to orders_complete_path
