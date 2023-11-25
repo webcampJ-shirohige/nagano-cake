@@ -18,10 +18,10 @@
         </td>
         <td>
           <% order.order_details.each do |order_details| %>
-            <% order_detailsr.item.name %>
+            <% order_details.item.name %>
             <% end %>
         </td>
-        <td><%= order.total_payment + order.shiipping_post %>円</td>
+        <td><%= @billing.to_s(:delimited) %>円</td>
         <td><%= order.status_li8n %></td>
         <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
         </td>
