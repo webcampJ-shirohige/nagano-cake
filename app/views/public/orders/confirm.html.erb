@@ -30,11 +30,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <th><%= @total %></th>
+          <th><%= @total.round.to_s(:delimited)%></th>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td></td>
+          <td><%= @postage + @total %></td>
         </tr>
       </table>
     </div>
@@ -67,6 +67,7 @@
       <%= f.hidden_field :post_code, value: @order.post_code %>
       <%= f.hidden_field :postage, value: @postage %>
       <%= f.hidden_field :customer_id, value: current_customer.id %>
+      <%= f.hidden_field :billing_amount, value: @postage + @total %>
     </div>
 <% end %>
 </div>
