@@ -16,7 +16,8 @@
       <%= f.label :amount, "個数" %>
       <%= f.select :amount, options_from_collection_for_select(1..10, :to_s, :to_s) %>
       <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.submit "カートに入れる" %>
+      <% f.hidden_field :image, value: @item.image %>
+      <%= f.submit "カートに入れる", class: "btn btn-sm btn-success rounded" %>
     <% end %>
   </div>
 </div>
