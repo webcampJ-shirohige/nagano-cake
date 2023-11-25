@@ -1,37 +1,37 @@
 <header>
   <nav>
     <div class="container">
-      <%= link_to "LOGO", root_path %>
-      <div>
-        <ul class="navbar-nav ml-auto">
+       <%= link_to "LOGO", root_path, class: "btn btn-light"%>
+      <div class="row justify-content-end">
+        <ul class="nav pull-right nav-pills">
         <% if customer_signed_in? %>
-          <li>
-            <%= link_to "マイページ", customers_mypage_edit_path %>
-          </li>
-          <li>
-            <%= link_to "商品一覧", items_path %>
-          </li>
-          <li>
-            <%= link_to "カート", cart_items_path %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-          </li>
+         <li>
+         <%= link_to "マイページ", customers_mypage_edit_path, class: "btn btn-light"%>
+         </li>
+         <li>
+         <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
+         </li>
+         <li>
+         <%= link_to "カート", cart_items_path, class: "btn btn-light" %>
+         </li>
+         <li>
+         <%= link_to "ログアウト", destroy_customer_session_path, class: "btn btn-light", method: :delete %>
+         </li>
         <% else %>
-          <li>
-            <%= link_to "About", about_path %>
-          </li>
-          <li>
-            <%= link_to "商品一覧", items_path %>
-          </li>
-          <li>
-            <%= link_to "新規登録", new_customer_registration_path %>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_customer_session_path %>
-          </li>
+         <li>
+         <%= link_to "About", about_path, class: "btn btn-light" %>
+         </li>
+         <li>
+         <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
+         </li>
+         <li>
+         <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-light" %>
+         </li>
+         <li>
+         <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light" %>
+         </li>
         <% end %>
-        </ul>
+         </ul>
       </div>
     </div>
   </nav>
