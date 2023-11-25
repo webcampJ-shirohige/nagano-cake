@@ -9,7 +9,8 @@ class Item < ApplicationRecord
 
   #税込表示価格
   def item_total_price
-    sprintf("%.2f", price_before_tax*1.10).sub(/\.?0+$/, '')
+    #sprintf("%.2f", price_before_tax*1.10).sub(/\.?0+$/, '')
+    (price_before_tax*1.1).floor
   end
 
   #カート内で商品の画像を表示させる
