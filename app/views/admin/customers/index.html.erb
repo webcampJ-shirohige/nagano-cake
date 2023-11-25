@@ -1,4 +1,7 @@
 <%= render 'layouts/admin_header' %>
+<div class="container">
+  <div class="row">
+    <div class="col">
 <h2>会員一覧</h2>
 <table class='table'>
   <thead>
@@ -13,7 +16,7 @@
     <% @customers.each do |customer| %>
     <tr>
         <td><%= customer.id %></td>
-        <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %></td>
+        <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "link-dark"%></td>
         <td><%= customer.email %></td>
         <td><% if customer.is_active  %>
              <p>有効</p>
@@ -24,3 +27,6 @@
     </tr>
     <% end %>
 　</tbody>
+  </div>
+ </div>
+</div>

@@ -32,7 +32,7 @@
   <tdbody>
     <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= image_tag cart_item.item.display_image, size: "70x50" %></td>
+      <td><%= image_tag cart_item.item.image, size: "70x50" %></td>
       <td><%= number_with_delimiter(cart_item.item.item_total_price) %></td>
       <td>
         <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
