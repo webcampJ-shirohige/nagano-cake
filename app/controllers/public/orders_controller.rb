@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @order=Order.new
@@ -35,7 +36,7 @@ class Public::OrdersController < ApplicationController
       @order_details.order_id=order.id
       @order_details.item_id=cart_item.item.id
       @order_details.piece=cart_item.amount
-      @order_details.price=order.billing_amount
+      @order_details.price=cart_item.item.item_total_price
       @order_details.save
     end
     redirect_to orders_complete_path
