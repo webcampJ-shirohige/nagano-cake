@@ -12,36 +12,36 @@
       <tr>
         <td>名前</td>
         <td><%= f.label :name, "(姓)"%></td>
-        <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "rounded" %></td>
+        <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "rounded", placeholder:"令和" %></td>
         <td><%= f.label :name, "(名)" %></td>
-        <td><%= f.text_field :first_name, autocomplete: "first_name", class: "rounded" %></td>
+        <td><%= f.text_field :first_name, autocomplete: "first_name", class: "rounded", placeholder:"三郎" %></td>
       </tr>
       <tr>
         <td>フリガナ</td>
         <td><%= f.label :name_kana, "(セイ)" %></td>
-        <td><%= f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "rounded" %></td>
+        <td><%= f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "rounded", placeholder:"レイワ" %></td>
         <td><%= f.label :name_kana, "(メイ)" %></td>
-        <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "rounded"  %></td>
+        <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "rounded", placeholder:"サブロー"  %></td>
       </tr>
       <tr>
         <td><%= f.label :email, "メールアドレス" %></td>
         <td></td>
-        <td><%= f.email_field :email, autocomplete: "email", class: "rounded"  %></td>
+        <td><%= f.email_field :email, autocomplete: "email", class: "rounded", placeholder:"sample@example.com"  %></td>
       </tr>
       <tr>
         <td><%= f.label :post_cord, "郵便番号(ハイフンなし)" %></td>
         <td></td>
-        <td><%= f.text_field :post_cord, autocomplete: "post_cord", class: "rounded"  %></td>
+        <td><%= f.text_field :post_cord, autocomplete: "post_cord", class: "rounded", placeholder:"1000001"  %></td>
       </tr>
       <tr>
         <td><%= f.label :address, "住所" %></td>
         <td></td>
-        <td><%= f.text_field :address, autocomplete: "adresses", class: "rounded"  %></td>
+        <td colspan="3"><%= f.text_field :address, autocomplete: "adresses", class: "rounded", size: "55x10", placeholder:"東京都千代田区千代田1-1" %></td>
       </tr>
       <tr>
         <td><%= f.label :telephone_number, "電話番号(ハイフンなし)" %></td>
         <td></td>
-        <td><%= f.text_field :telephone_number, autocomplete: "telephone_number", class: "rounded"  %></td>
+        <td><%= f.text_field :telephone_number, autocomplete: "telephone_number", class: "rounded", placeholder:"00000000000"  %></td>
       </tr>
       <tr>
         <td><%= f.label :password, "パスワード（6文字以上）" %></td>
