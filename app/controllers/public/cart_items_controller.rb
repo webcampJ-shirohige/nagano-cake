@@ -14,13 +14,14 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
-    @cart_items = current_customer.cart_items.all
+    #@cart_items = current_customer.cart_items.all
     @cart_item.item_id = params[:cart_item][:item_id]
-    @cart_items = current_customer.cart_items.all
-    if cart_item = @cart_items.find_by(item_id: @cart_item.item_id)
-      new_amount = cart_item.amount + @cart_item.amount
-      cart_item.update_attribute(:amount, new_amount)
-      @cart_item.delete
+    #@cart_items = current_customer.cart_items.all
+    if current_customer.cart_items.find_by(item_id: @cart_item.item_id).present?
+      cart_item = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
+      new_amount = cart_item.amount + @cart_item.amount.to_i
+      cart_item.update(amount: new_amount)
+     #@cart_item.delete
     else
       @cart_item.save
     end
