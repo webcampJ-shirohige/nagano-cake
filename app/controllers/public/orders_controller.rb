@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items=current_customer.cart_items
     @postage=@order.postage
-    @total = 0
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @billing=@postage+@total
   end
 
