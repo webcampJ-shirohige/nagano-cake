@@ -19,7 +19,7 @@
           <td><%= cart_item.amount %></td>
           <td><%= cart_item.subtotal %></td>
         </tr>
-        <%  @total = @total + cart_item_subtotal %>
+        <% # @total = @total + cart_item.subtotal %>
         <% end %>
       </table>
     </div>
