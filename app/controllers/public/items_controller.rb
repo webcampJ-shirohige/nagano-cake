@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items=Item.where(is_selling_status: true)
+    @items=Item.where(is_selling_status: true).page(params[:page])
   end
 
   def show
