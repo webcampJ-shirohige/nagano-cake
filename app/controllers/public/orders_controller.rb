@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @order=Order.new
@@ -21,6 +22,8 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items=current_customer.cart_items
     @postage=@order.postage
+    @total = 0
+    @billing=@postage+@total
   end
 
   def create
@@ -33,7 +36,7 @@ class Public::OrdersController < ApplicationController
       @order_details.order_id=order.id
       @order_details.item_id=cart_item.item.id
       @order_details.piece=cart_item.amount
-      @order_details.price=0
+      @order_details.price=cart_item.item.item_total_price
       @order_details.save
     end
     redirect_to orders_complete_path
@@ -46,6 +49,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment, :post_code, :address, :name, :postage, :customer_id)
+    params.require(:order).permit(:payment, :post_code, :address, :name, :postage, :customer_id, :billing_amount)
   end
 end
