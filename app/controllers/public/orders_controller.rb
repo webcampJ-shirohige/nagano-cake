@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @order=Order.new
@@ -22,7 +23,7 @@ class Public::OrdersController < ApplicationController
     @cart_items=current_customer.cart_items
     @postage=@order.postage
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @billing=@order.billing_amount
+    @billing=@postage+@total
   end
 
   def create
@@ -35,7 +36,7 @@ class Public::OrdersController < ApplicationController
       @order_details.order_id=order.id
       @order_details.item_id=cart_item.item.id
       @order_details.piece=cart_item.amount
-      @order_details.price=order.billing_amount
+      @order_details.price=cart_item.item.item_total_price
       @order_details.save
     end
     redirect_to orders_complete_path
@@ -45,9 +46,18 @@ class Public::OrdersController < ApplicationController
   def complete
   end
 
+  def index
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:payment, :post_code, :address, :name, :postage, :customer_id, :billing_amount)
+    params.require(:order).permit(:payment, :post_code, :address, :name, :postage, :customer_id, :billing_amount, :total)
   end
 end

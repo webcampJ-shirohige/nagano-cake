@@ -7,6 +7,13 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_details #n:mの関係を表現するアソシエーション。
   belongs_to :genre
 
+  #バリデーション
+  validates :name, presence: true
+  validates :image, presence: true
+  validates :introduction, presence: true
+  validates :genre_id, presence: true
+  validates :price_before_tax, presence: true
+  
   #税込表示価格
   def item_total_price
     (price_before_tax*1.1).floor

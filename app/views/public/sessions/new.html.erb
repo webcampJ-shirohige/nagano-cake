@@ -9,12 +9,13 @@
   </div>
 
   <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="row mt-2 ml-5">
     <table class="table table-borderless">
       <tr>
         <th><%= f.label :メールアドレス %></th>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded" %></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded", placeholder:"sample@example.com" %></td>
       </tr>
       <tr>
         <th><%= f.label :パスワード %></th>
