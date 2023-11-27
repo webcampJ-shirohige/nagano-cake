@@ -10,9 +10,9 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-     if @order.update(order_params)
-         if @order.status == "confirm_payment"
-            @order_details.update_all(create_status: 1) 
+    if @order.update(order_params)
+        if  @order.status == "confirm_payment"
+            @order_details.update_all(create_status: 1)
         end
      end
      redirect_to admin_order_path(@order.id)
