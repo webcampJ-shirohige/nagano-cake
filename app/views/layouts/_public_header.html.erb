@@ -11,7 +11,7 @@
               <ul class="nav pull-right nav-pills">
                 <% if admin_signed_in? %>
                   <li>
-                    <%= link_to "マイページ", customers_mypage_edit_path, class: "btn btn-outline-dark"%>
+                    <%= link_to "マイページ", customers_mypage_path, class: "btn btn-outline-dark"%>
                   </li>
                   <li>
                     <%= link_to "商品一覧", items_path, class: "btn btn-outline-dark" %>
@@ -22,6 +22,7 @@
                   <li>
                     <%= link_to "ログアウト", destroy_customer_session_path, class: "btn btn-outline-dark", method: :delete %>
                   </li>
+                  <%= "ようこそ、"+ current_customer.last_name+"さん！" %>
                 <% else %>
                   <li>
                     <%= link_to "About", about_path, class: "btn btn-outline-dark" %>
@@ -35,8 +36,14 @@
                   <li>
                     <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark" %>
                   </li>
-
                 <% end %>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <%= form_with(url:cart_items_path, scope: :post, local: true) do |f| %>
+                      <%= f.text_field :search, placeholder: "キーワード検索" %>
+                      <% f.submit %>
+                    <% end %>
+                </div>
               </ul>
             </div>
           </div>

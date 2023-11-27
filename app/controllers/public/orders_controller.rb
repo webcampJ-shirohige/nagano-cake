@@ -37,6 +37,7 @@ class Public::OrdersController < ApplicationController
       @order_details.item_id=cart_item.item.id
       @order_details.piece=cart_item.amount
       @order_details.price=cart_item.item.item_total_price
+      @order_details.create_status = 0
       @order_details.save
     end
     redirect_to orders_complete_path
