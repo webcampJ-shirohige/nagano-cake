@@ -39,6 +39,13 @@
                     <%= link_to"ログイン", admin_session_path, class: "btn btn-outline-dark" %>
                   </li>
                 <% end %>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <%= form_with(url:cart_items_path, scope: :post, local: true) do |f| %>
+                      <%= f.text_field :search, placeholder: "キーワード検索" %>
+                      <% f.submit %>
+                    <% end %>
+                </div>
               </ul>
             </div>
           </div>
