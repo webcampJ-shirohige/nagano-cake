@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row mt-5">
-    <div class="col-2">
+    <div class="col-3">
       <h4>商品一覧</h4>
     </div>
     <div class="col text-right">
@@ -39,5 +39,7 @@
     <% end %>
     </table>
   </div>
-  <%= paginate @items %>
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @items %>
+  </div>
 </div>

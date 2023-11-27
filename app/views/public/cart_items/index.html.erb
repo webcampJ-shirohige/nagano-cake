@@ -1,3 +1,4 @@
+<%= render 'layouts/public_header' %>
 <div class="container">
   <% if @cart_items.empty? %>
   <div class="row mt-3">
@@ -32,16 +33,16 @@
   <tdbody>
     <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= image_tag cart_item.item.image, size: "70x50" %></td>
-      <td><%= number_with_delimiter(cart_item.item.item_total_price) %></td>
+      <td><%= image_tag cart_item.item.image, size: "70x50" %> <%= cart_item.item.name %></td>
+      <td><%= cart_item.item.item_total_price.to_i %></td>
       <td>
-        <%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
+        <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
           <%= f.select :amount, *[1..10] %>
           <%= f.hidden_field :item_id, :value => cart_item.item.id %>
           <%= f.submit "変更", class: "btn btn-succeses" %>
         <% end %>
       </td>
-      <td><%= number_with_delimiter(cart_item.subtotal.to_i) %></td>
+      <td><%= cart_item.subtotal.to_i %></td>
       <% @total_payment += cart_item.subtotal.to_i %>
       <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "選択した商品を削除しますが、よろしいでしょうか？", class: "btn btn-danger" %></td>
     </tr>
@@ -59,7 +60,7 @@
       <tbody>
         <tr>
           <td class="table-active">合計金額</td>
-          <td><%= @total_payment.to_s(:delimited) %></td>
+          <td><%= @total_payment %></td>
         </tr>
       </tbody>
     </table>

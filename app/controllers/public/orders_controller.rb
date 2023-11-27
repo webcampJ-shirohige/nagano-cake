@@ -47,9 +47,18 @@ class Public::OrdersController < ApplicationController
   def complete
   end
 
+  def index
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:payment, :post_code, :address, :name, :postage, :customer_id, :billing_amount)
+    params.require(:order).permit(:payment, :post_code, :address, :name, :postage, :customer_id, :billing_amount, :total)
   end
 end
