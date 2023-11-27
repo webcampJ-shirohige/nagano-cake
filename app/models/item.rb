@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     if image.attached?
       image.variant(resize_to_limit: [100, 100]).processed
     else
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.png')
       file_path.to_s
     end
   end
