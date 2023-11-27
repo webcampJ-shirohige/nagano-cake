@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
     @customer=current_customer
     @customer.update(is_active: false)
     reset_session
-    redirect_to new_customer_registration_path
+    redirect_to root_path
   end
 
   private
