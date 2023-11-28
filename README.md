@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション名
+nagano-cake　長野県内のケーキ屋さんのECサイト　
 
-Things you may want to cover:
+# 管理者側アカウント
+メールアドレス：test@test.com
+パスワード：shirohige
+管理者用ログインURL:/admin/sign_in
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使用までの手順
+$ git clone 
