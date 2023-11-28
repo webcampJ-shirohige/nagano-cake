@@ -26,7 +26,7 @@ Ruby<br>
 JavaScript<br>
 Ruby on Rails<br>
 
-#　動作環境
+# 動作環境
 Ruby 3.1.2
 
 # 制作者
