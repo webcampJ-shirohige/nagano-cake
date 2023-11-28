@@ -1,0 +1,53 @@
+<%= render 'layouts/admin_header' %>
+<html>
+  <body>
+    <main>
+      <p id= "notice"></p>
+      <div class= "container">
+        <div class= "row">
+          <div class= "col-sm-12">
+            <h4>ジャンル機能</h4>
+
+            <% if @genre.errors.any? %>
+              <%= @genre.errors.count %>件のエラーが発生しました
+              <ul>
+                <% @genre.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            <% end %>
+
+            <%= form_with model: @genre, url: admin_genres_path do |f| %>
+              <p>ジャンル名
+                <td><%= f.text_field :name, class:'m-4', :placeholder => "ジャンル名" %></td>
+
+                <td><%= f.submit '新規登録', class:'btn btn-success m-4' %></td>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class= "col-sm-6">
+            <table class='table'>
+              <tr class="table-secondary">
+                <th colspan="2">ジャンル</th>
+              </tr>
+              <% @genres.each do |genre| %>
+
+              <tr class="border-bottom">
+                <td><%= genre.name %></td>
+
+                <td style="width: 150px;"><%= link_to '編集する', edit_admin_genre_path(genre), class:'btn btn-success'  %></td>
+              </tr>
+
+              <% end %>
+            </table>
+          </div>
+          <div class= "col-sm-6"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

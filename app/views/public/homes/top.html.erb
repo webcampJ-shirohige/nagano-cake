@@ -1,0 +1,38 @@
+<%= render 'layouts/public_header' %>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-3">
+      <div>
+        <h4>ジャンル検索</h4>
+        <h5>ケーキ</h5>
+        <H5>焼き菓子</H5>
+        <H5>プリン</H5>
+        <H5>キャンディ</H5>
+      </div>
+    </div>
+      <div class="col-md-9">
+        <h4>ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。</h4>
+
+        <h2>新着商品</h2>
+        <div class="row mt-4">
+            <% @items.each do |item| %>
+              <div class="col">
+                <div class="card">
+                  <%= link_to item_path(item) do %>
+                    <%= image_tag item.image, size: "200x200", class: "card-img-top" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <div class="h5 card-title"><%= item.name %></div>
+                  <div class="h6 card-subtitle">￥<%= number_with_delimiter(item.item_total_price, delimiter: ',') %></div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+        <%= link_to "全ての商品を見る>", items_path %>
+    </div>
+ </div>
+</div>

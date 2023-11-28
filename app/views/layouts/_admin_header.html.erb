@@ -1,0 +1,56 @@
+<header>
+  <div class="p-1 border-bottom border-secondary">
+    <nav>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <%= link_to "LOGO", admin_path, class: "btn btn-outline-dark btn-lg"%>
+          </div>
+          <div class="col">
+            <div class="d-flex flex-row-reverse bd-highlight">
+              <ul class="nav pull-right nav-pills">
+                <% if admin_signed_in? %>
+                  <li>
+                    <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark"  %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-dark", method: :delete   %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "About", about_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to"新規登録", admin_session_path, class: "btn btn-outline-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to"ログイン", admin_session_path, class: "btn btn-outline-dark" %>
+                  </li>
+                <% end %>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <%= form_with(url:cart_items_path, scope: :post, local: true) do |f| %>
+                      <%= f.text_field :search, placeholder: "キーワード検索" %>
+                      <% f.submit %>
+                    <% end %>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
